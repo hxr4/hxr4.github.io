@@ -1,39 +1,39 @@
 const Projects = () => {
   const projects = [
     {
-      title: "Project Alpha",
-      description: "A design system that actually gets used",
-      tags: ["UI/UX", "React", "Design System"],
+      title: "Neural Network Research",
+      description: "Teaching machines to think while I barely function",
+      tags: ["Python", "TensorFlow", "Research"],
       year: "2024"
     },
     {
-      title: "Brand Refresh",
-      description: "Making corporate identities less corporate",
-      tags: ["Branding", "Typography", "Strategy"],
-      year: "2023"
-    },
-    {
-      title: "E-commerce Platform",
-      description: "Where buying stuff feels surprisingly good",
-      tags: ["Development", "UX", "Performance"],
-      year: "2023"
-    },
-    {
-      title: "Mobile App",
-      description: "An app that doesn't make you rage-quit",
-      tags: ["UI Design", "Prototyping", "Research"],
+      title: "Portrait Series",
+      description: "People in focus, their life choices questionable",
+      tags: ["Mirrorless", "Portrait", "Editorial"],
       year: "2024"
     },
     {
-      title: "Editorial Project",
-      description: "Typography-forward design for actual reading",
-      tags: ["Editorial", "Typography", "Print"],
-      year: "2022"
+      title: "Custom ROM Development",
+      description: "Unbricking phones others have given up on",
+      tags: ["Android", "Linux", "Rooting"],
+      year: "2023"
     },
     {
-      title: "Dashboard Redesign",
-      description: "Data visualization without the headache",
-      tags: ["UX", "Data Viz", "SaaS"],
+      title: "ML Model Pipeline",
+      description: "Automating the boring stuff so I can break things faster",
+      tags: ["Python", "ML", "CLI"],
+      year: "2024"
+    },
+    {
+      title: "Audio Analysis Tool",
+      description: "Visualizing what your ears can't comprehend",
+      tags: ["Python", "Audio", "Data Viz"],
+      year: "2023"
+    },
+    {
+      title: "System Administration",
+      description: "Managing servers across OS that actually matter",
+      tags: ["Linux", "Mac", "CLI"],
       year: "2024"
     }
   ];

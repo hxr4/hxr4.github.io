@@ -10,12 +10,12 @@ const Hero = () => {
     <section className="min-h-screen flex items-center justify-center px-6 pt-20">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 text-balance">
-          Probably overthinking
+          Training models
           <br />
-          <span className="text-muted-foreground">your design right now</span>
+          <span className="text-muted-foreground">while you train bugs</span>
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto text-balance">
-          Designer, developer, and occasional photographer. Building things that don't need a manual to understand.
+          B.Tech AI/ML student who speaks Python fluently, shoots portraits seriously, and prefers CLI over your fancy buttons.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <Button

@@ -1,19 +1,24 @@
 const Skills = () => {
   const skills = [
     {
-      category: "Design",
-      items: ["UI/UX", "Branding", "Typography", "Prototyping"],
-      description: "Making pixels cooperate since 2018"
-    },
-    {
-      category: "Development",
-      items: ["React", "TypeScript", "Node.js", "Tailwind"],
-      description: "Turning coffee into code, responsibly"
+      category: "AI & ML",
+      items: ["Python", "Neural Networks", "Linux", "ML Models"],
+      description: "Training models that actually learn, unlike some people"
     },
     {
       category: "Photography",
-      items: ["Portrait", "Street", "Product", "Editorial"],
-      description: "Capturing moments before they ghost me"
+      items: ["Portrait", "Mirrorless", "Composition", "Lighting"],
+      description: "Capturing people who are probably judging my camera choice"
+    },
+    {
+      category: "Hardware & Systems",
+      items: ["Android Rooting", "OS Customization", "CLI", "Cross-Platform"],
+      description: "Bricking phones professionally since forever"
+    },
+    {
+      category: "Audio",
+      items: ["24bit/96KHz", "Audiophile", "Percussion Analysis", "Anatomical Ears"],
+      description: "Hearing frequencies your AirPods can't even imagine"
     }
   ];
 
@@ -27,7 +32,7 @@ const Skills = () => {
           Or at least what I tell people I do at parties
         </p>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skills.map((skill) => (
             <div
               key={skill.category}
