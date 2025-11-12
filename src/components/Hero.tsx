@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -7,23 +8,40 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-20">
+    <section className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-6 text-balance">
-          Training models
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-6xl md:text-8xl font-bold tracking-tight mb-6 text-balance"
+        >
+          Building neural networks
           <br />
-          <span className="text-muted-foreground">while you train bugs</span>
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto text-balance">
-          B.Tech AI/ML student who speaks Python fluently, shoots portraits seriously, and prefers CLI over your fancy buttons.
-        </p>
-        <div className="flex gap-4 justify-center flex-wrap">
+          <span className="text-muted-foreground">and breaking bootloaders</span>
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto text-balance"
+        >
+          B.Tech AI/ML student. Python developer. Portrait photographer. CLI enthusiast. Audiophile with anatomical precision.
+        </motion.p>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex gap-4 justify-center flex-wrap"
+        >
           <Button
             onClick={() => scrollToSection("projects")}
             size="lg"
-            className="font-medium"
+            className="font-medium group"
           >
-            See the work
+            <span className="group-hover:translate-x-1 transition-transform inline-block">
+              View work
+            </span>
           </Button>
           <Button
             onClick={() => scrollToSection("contact")}
@@ -31,9 +49,9 @@ const Hero = () => {
             size="lg"
             className="font-medium"
           >
-            Let's talk
+            Get in touch
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

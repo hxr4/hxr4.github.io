@@ -13,10 +13,10 @@ const Contact = () => {
     <section id="contact" className="py-32 px-6">
       <div className="container mx-auto max-w-4xl text-center">
         <h2 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">
-          Let's work together
+          Let's connect
         </h2>
         <p className="text-muted-foreground text-lg mb-12">
-          Unless you want a logo for $50. Then let's not.
+          Open to collaboration on interesting projects
         </p>
         
         <Button
@@ -44,7 +44,7 @@ const Contact = () => {
         </div>
 
         <p className="text-sm text-muted-foreground">
-          © 2024 Your Name. Built with an unreasonable attention to detail.
+          © 2024 Your Name. Engineered with precision.
         </p>
       </div>
     </section>

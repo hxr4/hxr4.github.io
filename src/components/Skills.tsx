@@ -1,44 +1,64 @@
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
 const Skills = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const skills = [
     {
       category: "AI & ML",
       items: ["Python", "Neural Networks", "Linux", "ML Models"],
-      description: "Training models that actually learn, unlike some people"
+      description: "Deep learning research and model optimization"
     },
     {
       category: "Photography",
       items: ["Portrait", "Mirrorless", "Composition", "Lighting"],
-      description: "Capturing people who are probably judging my camera choice"
+      description: "Serious portraiture with technical precision"
     },
     {
       category: "Hardware & Systems",
       items: ["Android Rooting", "OS Customization", "CLI", "Cross-Platform"],
-      description: "Bricking phones professionally since forever"
+      description: "System-level modifications and cross-platform expertise"
     },
     {
       category: "Audio",
       items: ["24bit/96KHz", "Audiophile", "Percussion Analysis", "Anatomical Ears"],
-      description: "Hearing frequencies your AirPods can't even imagine"
+      description: "High-fidelity audio engineering and analysis"
     }
   ];
 
   return (
-    <section id="skills" className="py-32 px-6">
+    <section id="skills" className="py-32 px-6" ref={ref}>
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">
-          What I do
-        </h2>
-        <p className="text-muted-foreground text-lg mb-16">
-          Or at least what I tell people I do at parties
-        </p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-5xl md:text-6xl font-bold mb-4 tracking-tight"
+        >
+          Expertise
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-muted-foreground text-lg mb-16"
+        >
+          Core competencies and technical skills
+        </motion.p>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map((skill) => (
-            <div
+          {skills.map((skill, index) => (
+            <motion.div
               key={skill.category}
-              className="group p-8 rounded-sm border border-border hover:border-foreground transition-smooth hover:bg-hover-lift"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              className="group p-8 rounded-sm border border-border hover:border-foreground transition-smooth hover:bg-hover-lift cursor-default"
             >
-              <h3 className="text-2xl font-bold mb-3 tracking-tight">
+              <h3 className="text-2xl font-bold mb-3 tracking-tight group-hover:text-hero-accent transition-colors">
                 {skill.category}
               </h3>
               <p className="text-sm text-muted-foreground mb-6 italic">
@@ -54,7 +74,7 @@ const Skills = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
