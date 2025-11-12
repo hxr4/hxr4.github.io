@@ -57,6 +57,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "hero-accent": "hsl(var(--hero-accent))",
+        "subtle-gray": "hsl(var(--subtle-gray))",
+        "hover-lift": "hsl(var(--hover-lift))",
+      },
+      fontFamily: {
+        'sans': ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
