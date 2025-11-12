@@ -3,10 +3,10 @@ import { Mail, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 
 const Contact = () => {
   const socials = [
-    { icon: Github, label: "GitHub", url: "https://github.com/yourusername" },
-    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/in/yourusername" },
-    { icon: Twitter, label: "Twitter", url: "https://twitter.com/yourusername" },
-    { icon: Instagram, label: "Instagram", url: "https://instagram.com/yourusername" },
+    { icon: Github, label: "GitHub", url: "https://github.com/hxr4/" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/in/hari456" },
+    { icon: Twitter, label: "Twitter", url: "https://x.com/hari_frr" },
+    { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/hri.fr/" },
   ];
 
   return (
@@ -22,10 +22,10 @@ const Contact = () => {
         <Button
           size="lg"
           className="font-medium mb-12"
-          onClick={() => window.location.href = 'mailto:your.email@example.com'}
+          onClick={() => window.location.href = 'mailto:youcallmehari01@gmail.com'}
         >
           <Mail className="mr-2 h-5 w-5" />
-          your.email@example.com
+          youcallmehari01@gmail.com
         </Button>
 
         <div className="flex justify-center gap-6 mb-16">
@@ -44,7 +44,7 @@ const Contact = () => {
         </div>
 
         <p className="text-sm text-muted-foreground">
-          © 2024 Your Name. Engineered with precision.
+          © 2024 Hari. Engineered with precision.
         </p>
       </div>
     </section>
