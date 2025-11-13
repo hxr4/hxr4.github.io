@@ -70,6 +70,7 @@ export default {
         'gradient-subtle': 'var(--gradient-subtle)',
         'gradient-accent': 'var(--gradient-accent)',
         'gradient-hero': 'var(--gradient-hero)',
+        'gradient-mesh': 'var(--gradient-mesh)',
       },
       borderRadius: {
         lg: "var(--radius)",

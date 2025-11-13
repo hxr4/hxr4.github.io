@@ -30,13 +30,13 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-32 px-6" ref={ref}>
+    <section id="skills" className="py-32 px-4 sm:px-6" ref={ref}>
       <div className="container mx-auto max-w-6xl">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-5xl md:text-6xl font-bold mb-4 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 tracking-tight"
         >
           Expertise
         </motion.h2>
@@ -49,7 +49,7 @@ const Skills = () => {
           Core competencies and technical skills
         </motion.p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.category}

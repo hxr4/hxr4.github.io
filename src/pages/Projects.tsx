@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import SubtleAnimations from "@/components/SubtleAnimations";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ExternalLink, Github } from "lucide-react";
@@ -40,10 +41,11 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-dark">
+    <div className="min-h-screen bg-gradient-dark relative">
+      <SubtleAnimations />
       <Navigation />
       
-      <main className="pt-32 pb-20 px-6">
+      <main className="pt-32 pb-20 px-4 sm:px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -51,10 +53,10 @@ const Projects = () => {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4">
               Selected Projects
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base sm:text-lg">
               Quality over quantity. Built with precision, no shortcuts.
             </p>
           </motion.div>
@@ -66,12 +68,12 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative p-8 rounded-sm bg-gradient-accent border border-border/50 hover:border-hero-accent/50 transition-all duration-500"
+                className="group relative p-6 sm:p-8 rounded-sm bg-gradient-accent border border-border/50 hover:border-hero-accent/50 transition-all duration-500"
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-2xl font-bold group-hover:text-hero-accent transition-colors duration-300">
+                      <h3 className="text-xl sm:text-2xl font-bold group-hover:text-hero-accent transition-colors duration-300">
                         {project.title}
                       </h3>
                       <span className="text-sm text-muted-foreground font-mono">

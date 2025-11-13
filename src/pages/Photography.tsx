@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import SubtleAnimations from "@/components/SubtleAnimations";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -27,7 +28,7 @@ const Photography = () => {
     },
     {
       id: 4,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/20250711_170352_tzhs3l.jpg",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967310/20250203_194938_utmhje.heic",
       title: "Afternoon Light",
       category: "Portrait"
     },
@@ -51,13 +52,13 @@ const Photography = () => {
     },
     {
       id: 8,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/poiu_rt7p2c.jpg",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763011057/DSC00423_yepigg.jpg",
       title: "Raw Emotion",
       category: "Portrait"
     },
     {
       id: 9,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/IMG20230825090236_sjeb7f.jpg",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763046146/Screenshot_20251112_222232_Instagram_p6uf89.jpg",
       title: "Morning Shot",
       category: "Portrait"
     },
@@ -76,10 +77,11 @@ const Photography = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen bg-gradient-subtle relative">
+      <SubtleAnimations />
       <Navigation />
       
-      <main className="pt-32 pb-20 px-6">
+      <main className="pt-32 pb-20 px-4 sm:px-6 relative z-10">
         <div className="container mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -87,16 +89,16 @@ const Photography = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 tracking-tight">
               Photography
             </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
               Serious portraits shot on mirrorless. No filters, no compromises.
             </p>
           </motion.div>
 
           {/* Masonry Grid */}
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
             {photos.map((photo, index) => (
               <motion.div
                 key={photo.id}
@@ -112,7 +114,7 @@ const Photography = () => {
                   <img
                     src={photo.url}
                     alt={photo.title}
-                    className="w-full h-auto object-cover transition-smooth group-hover:scale-110"
+                    className="w-full h-auto object-cover transition-smooth group-hover:scale-110 group-hover:rotate-1"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-smooth">
@@ -151,7 +153,7 @@ const Photography = () => {
           >
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
             >
               <X className="w-6 h-6" />
             </button>
@@ -162,9 +164,9 @@ const Photography = () => {
                   e.stopPropagation();
                   handlePrevious();
                 }}
-                className="absolute left-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
+                className="absolute left-4 sm:left-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             )}
 
@@ -174,9 +176,9 @@ const Photography = () => {
                   e.stopPropagation();
                   handleNext();
                 }}
-                className="absolute right-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
+                className="absolute right-4 sm:right-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             )}
 
