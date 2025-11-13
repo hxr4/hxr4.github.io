@@ -1,66 +1,213 @@
 import Navigation from "@/components/Navigation";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const Photography = () => {
-  // Placeholder images - you'll replace these with actual photos
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
   const photos = [
-    { id: 1, title: "Urban Geometry", category: "Street" },
-    { id: 2, title: "Golden Hour", category: "Portrait" },
-    { id: 3, title: "Minimalist Product", category: "Product" },
-    { id: 4, title: "City Nights", category: "Street" },
-    { id: 5, title: "Natural Light", category: "Portrait" },
-    { id: 6, title: "Abstract Architecture", category: "Editorial" },
-    { id: 7, title: "Candid Moment", category: "Street" },
-    { id: 8, title: "Studio Work", category: "Product" },
-    { id: 9, title: "Black & White", category: "Portrait" },
+    {
+      id: 1,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967488/street_dsxpl6.jpg",
+      title: "Urban Wanderer",
+      category: "Street"
+    },
+    {
+      id: 2,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967487/DSC00423_eaahf0.jpg",
+      title: "Golden Portrait",
+      category: "Portrait"
+    },
+    {
+      id: 3,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967310/20250203_194938_utmhje.heic",
+      title: "Evening Glow",
+      category: "Portrait"
+    },
+    {
+      id: 4,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/20250711_170352_tzhs3l.jpg",
+      title: "Afternoon Light",
+      category: "Portrait"
+    },
+    {
+      id: 5,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967309/oo_cvqifs.jpg",
+      title: "Natural Mood",
+      category: "Portrait"
+    },
+    {
+      id: 6,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/IMG20231021174057_tk3pzt.heic",
+      title: "Classic Frame",
+      category: "Portrait"
+    },
+    {
+      id: 7,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/IMG-20250922-WA0005_onmzj7.jpg",
+      title: "Candid Capture",
+      category: "Street"
+    },
+    {
+      id: 8,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/poiu_rt7p2c.jpg",
+      title: "Raw Emotion",
+      category: "Portrait"
+    },
+    {
+      id: 9,
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/IMG20230825090236_sjeb7f.jpg",
+      title: "Morning Shot",
+      category: "Portrait"
+    },
   ];
 
+  const handlePrevious = () => {
+    if (selectedImage !== null && selectedImage > 0) {
+      setSelectedImage(selectedImage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (selectedImage !== null && selectedImage < photos.length - 1) {
+      setSelectedImage(selectedImage + 1);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-subtle">
       <Navigation />
       
       <main className="pt-32 pb-20 px-6">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
               Photography
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Proof that I occasionally leave the house with something other than a laptop
+              Serious portraits shot on mirrorless. No filters, no compromises.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {photos.map((photo) => (
-              <div
+          {/* Masonry Grid */}
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            {photos.map((photo, index) => (
+              <motion.div
                 key={photo.id}
-                className="group relative aspect-[4/5] overflow-hidden rounded-sm bg-muted cursor-pointer"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                className="break-inside-avoid"
               >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-6">
-                    <p className="text-sm text-muted-foreground mb-2">
-                      {photo.category}
-                    </p>
-                    <h3 className="text-xl font-bold tracking-tight">
-                      {photo.title}
-                    </h3>
+                <div
+                  onClick={() => setSelectedImage(index)}
+                  className="group relative overflow-hidden rounded-sm cursor-pointer bg-muted"
+                >
+                  <img
+                    src={photo.url}
+                    alt={photo.title}
+                    className="w-full h-auto object-cover transition-smooth group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-smooth">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <p className="text-xs text-muted-foreground mb-1">{photo.category}</p>
+                      <h3 className="text-xl font-bold tracking-tight">{photo.title}</h3>
+                    </div>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-foreground/80 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center">
-                  <p className="text-background font-medium">
-                    Image placeholder — Add your photos later
-                  </p>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <div className="mt-16 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+            className="mt-16 text-center"
+          >
             <p className="text-muted-foreground text-sm">
-              All images shot on film because it makes me look more artistic
+              Shot on mirrorless • 24-bit captures • Zero compromise on quality
             </p>
-          </div>
+          </motion.div>
         </div>
       </main>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 bg-background/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-6 right-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {selectedImage > 0 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrevious();
+                }}
+                className="absolute left-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+            )}
+
+            {selectedImage < photos.length - 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                className="absolute right-6 p-2 rounded-full bg-muted hover:bg-muted/80 transition-fast z-10"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            )}
+
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-6xl max-h-[90vh] relative"
+            >
+              <img
+                src={photos[selectedImage].url}
+                alt={photos[selectedImage].title}
+                className="max-w-full max-h-[90vh] object-contain rounded-sm"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background/90 to-transparent">
+                <p className="text-xs text-muted-foreground mb-1">
+                  {photos[selectedImage].category}
+                </p>
+                <h3 className="text-2xl font-bold tracking-tight">
+                  {photos[selectedImage].title}
+                </h3>
+                <p className="text-sm text-muted-foreground mt-2">
+                  {selectedImage + 1} / {photos.length}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

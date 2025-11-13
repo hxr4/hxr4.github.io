@@ -63,6 +63,13 @@ export default {
       },
       fontFamily: {
         'sans': ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        'mono': ['IBM Plex Mono', 'Menlo', 'Monaco', 'Courier New', 'monospace'],
+      },
+      backgroundImage: {
+        'gradient-dark': 'var(--gradient-dark)',
+        'gradient-subtle': 'var(--gradient-subtle)',
+        'gradient-accent': 'var(--gradient-accent)',
+        'gradient-hero': 'var(--gradient-hero)',
       },
       borderRadius: {
         lg: "var(--radius)",
