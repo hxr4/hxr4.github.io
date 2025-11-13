@@ -6,6 +6,7 @@ const Navigation = () => {
   
   const links = [
     { name: "Work", path: "/" },
+    { name: "Projects", path: "/projects" },
     { name: "Photos", path: "/photography" },
     { name: "About", path: "/about" },
   ];
@@ -18,7 +19,7 @@ const Navigation = () => {
             devHari
           </Link>
           
-          <div className="flex gap-8">
+          <div className="flex gap-8 items-center">
             {links.map((link) => (
               <Link
                 key={link.path}
@@ -33,6 +34,14 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            <a
+              href="https://open.spotify.com/user/31cms34hx7swbmxgc27cxzt53ue4?si=2065f16b9e054bfa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium tracking-wide text-muted-foreground hover:text-hero-accent transition-fast"
+            >
+              Spotify
+            </a>
           </div>
         </div>
       </div>

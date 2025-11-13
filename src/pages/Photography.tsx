@@ -9,13 +9,13 @@ const Photography = () => {
   const photos = [
     {
       id: 1,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967488/street_dsxpl6.jpg",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763010957/street_gwqaoz.jpg",
       title: "Urban Wanderer",
       category: "Street"
     },
     {
       id: 2,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967487/DSC00423_eaahf0.jpg",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763010957/street_gwqaoz.jpg",
       title: "Golden Portrait",
       category: "Portrait"
     },
