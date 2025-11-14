@@ -97,30 +97,29 @@ const Photography = () => {
             </p>
           </motion.div>
 
-          {/* Masonry Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 auto-rows-auto">
+          {/* Uniform Grid with Fixed Aspect Ratios */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {photos.map((photo, index) => (
               <motion.div
                 key={photo.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1, duration: 0.4 }}
-                className="break-inside-avoid"
               >
                 <div
                   onClick={() => setSelectedImage(index)}
-                  className="group relative overflow-hidden rounded-sm cursor-pointer bg-muted"
+                  className="group relative overflow-hidden rounded-sm cursor-pointer bg-muted aspect-square"
                 >
                   <img
                     src={photo.url}
                     alt={photo.title}
-                    className="w-full h-auto object-cover transition-smooth group-hover:scale-110 group-hover:rotate-1"
+                    className="w-full h-full object-cover transition-smooth group-hover:scale-110 group-hover:rotate-1"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-smooth">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
                       <p className="text-xs text-muted-foreground mb-1">{photo.category}</p>
-                      <h3 className="text-xl font-bold tracking-tight">{photo.title}</h3>
+                      <h3 className="text-lg sm:text-xl font-bold tracking-tight">{photo.title}</h3>
                     </div>
                   </div>
                 </div>
