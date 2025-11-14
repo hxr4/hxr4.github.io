@@ -40,15 +40,15 @@ const MouseParticles = () => {
       };
 
       // Create particles on mouse move
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < 3; i++) {
         particlesRef.current.push({
           x: mouseRef.current.x,
           y: mouseRef.current.y,
-          size: Math.random() * 3 + 1,
-          speedX: (Math.random() - 0.5) * 2,
-          speedY: (Math.random() - 0.5) * 2,
+          size: Math.random() * 4 + 2,
+          speedX: (Math.random() - 0.5) * 3,
+          speedY: (Math.random() - 0.5) * 3,
           life: 1,
-          maxLife: Math.random() * 60 + 40,
+          maxLife: Math.random() * 80 + 60,
         });
       }
     };
@@ -68,7 +68,16 @@ const MouseParticles = () => {
         const alpha = 1 - particle.life / particle.maxLife;
         
         if (alpha > 0) {
-          ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.8})`;
+          // Create a glowing effect
+          const gradient = ctx.createRadialGradient(
+            particle.x, particle.y, 0,
+            particle.x, particle.y, particle.size
+          );
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.9})`);
+          gradient.addColorStop(0.5, `rgba(255, 255, 255, ${alpha * 0.6})`);
+          gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+          
+          ctx.fillStyle = gradient;
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
           ctx.fill();
