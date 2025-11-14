@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const location = useLocation();
@@ -12,6 +13,8 @@ const Navigation = () => {
     { name: "Projects", path: "/projects" },
     { name: "Photos", path: "/photography" },
     { name: "About", path: "/about" },
+    { name: "Blog", path: "/blog" },
+    { name: "Spotify", path: "/spotify" },
   ];
 
   return (
@@ -38,14 +41,7 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="https://open.spotify.com/user/31cms34hx7swbmxgc27cxzt53ue4?si=2065f16b9e054bfa"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium tracking-wide text-muted-foreground hover:text-hero-accent transition-fast"
-            >
-              Spotify
-            </a>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -75,15 +71,9 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="https://open.spotify.com/user/31cms34hx7swbmxgc27cxzt53ue4?si=2065f16b9e054bfa"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm font-medium tracking-wide text-muted-foreground hover:text-hero-accent transition-fast py-2"
-            >
-              Spotify
-            </a>
+            <div className="pt-2">
+              <ThemeToggle />
+            </div>
           </div>
         )}
       </div>
