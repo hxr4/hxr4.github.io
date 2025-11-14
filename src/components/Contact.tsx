@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin, Twitter, Instagram } from "lucide-react";
+import MouseParticles from "./MouseParticles";
 
 const Contact = () => {
   const socials = [
@@ -10,13 +11,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-32 px-4 sm:px-6">
-      <div className="container mx-auto max-w-4xl text-center">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 tracking-tight relative inline-block">
-          <span className="relative z-10">Let's connect</span>
-          <span className="absolute inset-0 text-foreground/10 font-['Courier_New'] translate-x-1 translate-y-1 select-none" aria-hidden="true">
-            Let's connect
-          </span>
+    <section id="contact" className="py-32 px-4 sm:px-6 relative">
+      <MouseParticles />
+      <div className="container mx-auto max-w-4xl text-center relative z-10">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 tracking-tight">
+          Let's connect
         </h2>
         <p className="text-muted-foreground text-lg mb-12">
           Open to collaboration on interesting projects

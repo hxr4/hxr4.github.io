@@ -22,13 +22,13 @@ const Photography = () => {
     },
     {
       id: 3,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967310/20250203_194938_utmhje.heic",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967310/20250203_194938_utmhje.jpg",
       title: "Evening Glow",
       category: "Portrait"
     },
     {
       id: 4,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967310/20250203_194938_utmhje.heic",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/20250711_170352_tzhs3l.jpg",
       title: "Afternoon Light",
       category: "Portrait"
     },
@@ -40,7 +40,7 @@ const Photography = () => {
     },
     {
       id: 6,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/IMG20231021174057_tk3pzt.heic",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/poiu_rt7p2c.jpg",
       title: "Classic Frame",
       category: "Portrait"
     },
@@ -98,7 +98,7 @@ const Photography = () => {
           </motion.div>
 
           {/* Masonry Grid */}
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 auto-rows-auto">
             {photos.map((photo, index) => (
               <motion.div
                 key={photo.id}
