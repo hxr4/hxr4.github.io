@@ -1,11 +1,11 @@
 import Navigation from "@/components/Navigation";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import SubtleAnimations from "@/components/SubtleAnimations";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Music, Guitar, Headphones } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const songs = [
   {
@@ -14,7 +14,7 @@ const songs = [
     album: "Aashiqui 2",
     cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763102403/Aashiqui-2-Hindi-2013-500x500_oxo3xp.webp",
     link: "https://open.spotify.com/track/6UgcN95w7vQxkR8sEFmwHG?si=b429f2bd09244394",
-    description: "The song that defines heartbreak and longing. Arijit's voice cuts through like a knife - every note is pain, every word is poetry. This isn't just a love song; it's an emotional journey."
+    description: "The song that defines heartbreak and longing. Arijit's voice cuts through like a knife."
   },
   {
     title: "Arz Kiya Hai",
@@ -22,7 +22,7 @@ const songs = [
     album: "Coke Studio Bharat",
     cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763102528/Arz-Kiya-Hai-Coke-Studio-Bharat-Hindi-2025-20250818054005-500x500_tyhulq.webp",
     link: "https://open.spotify.com/track/1bMkimTb47umgNP6xCi4A1?si=36f0bf9fbfe847c5",
-    description: "Anuv Jain's soulful poetry meets Coke Studio's magic. The way he weaves emotions into metaphors is unmatched. This track feels like a warm hug on a cold night."
+    description: "Anuv Jain's soulful poetry meets Coke Studio's magic."
   },
   {
     title: "The Night We Met",
@@ -30,7 +30,7 @@ const songs = [
     album: "Strange Trails",
     cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763102630/The-Night-We-Met-English-2018-20190120201512-500x500_zaooiw.webp",
     link: "https://open.spotify.com/track/3hRV0jL3vUpRrcy398teAU?si=8de706a04ad64150",
-    description: "Nostalgia bottled in 3 minutes and 28 seconds. If time travel exists, it sounds like this. Lord Huron captures the ache of missing moments that can never return."
+    description: "Nostalgia bottled in 3 minutes. If time travel exists, it sounds like this."
   },
   {
     title: "PILLOWTALK",
@@ -38,7 +38,7 @@ const songs = [
     album: "Mind of Mine",
     cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763102735/wp7452465_cl5qvy.webp",
     link: "https://open.spotify.com/track/0PDUDa38GO8lMxLCRc4lL1?si=a4424d06cba04351",
-    description: "Raw. Sensual. Unapologetic. Zayn's post-1D era started with a bang, and this track proves he was meant for solo stardom. The production is chef's kiss."
+    description: "Raw. Sensual. Unapologetic. Zayn's post-1D era started with a bang."
   },
   {
     title: "Nenjukkul Peidhidum",
@@ -46,15 +46,15 @@ const songs = [
     album: "Vaaranam Aayiram",
     cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763102816/Vaaranam-Aayiram-2008-500x500_s6xk9t.webp",
     link: "https://open.spotify.com/track/4vlMdXsRpAIXYggwbNHZSv?si=35310f5b25b34861",
-    description: "Harris Jayaraj's genius in full display. The melody sneaks into your heart like the title suggests. A Tamil classic that transcends language barriers with pure emotion."
+    description: "Harris Jayaraj's genius in full display. The melody sneaks into your heart."
   },
   {
     title: "Malare",
     artist: "Vijay Yesudas",
     album: "Premam",
-    cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763102904/Premam-Malayalam-2015-500x500_gfgk0x.webp",
+    cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763401794/Premam-Malayalam-2015-500x500_pfyl55.webp",
     link: "https://open.spotify.com/track/4Hvf9xIeJWp5p9FkJerQhN?si=ccc37d155d53421c",
-    description: "The sound of first love, captured perfectly. Premam's iconic track that makes you believe in romance all over again. Vijay Yesudas delivers magic here."
+    description: "The sound of first love, captured perfectly."
   },
   {
     title: "Nishani",
@@ -62,7 +62,7 @@ const songs = [
     album: "Single",
     cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763102991/NISHANI-Hindi-2024-20240619115500-500x500_qijjsf.webp",
     link: "https://open.spotify.com/track/7ku3rPm8SXmRRaI6x3GGBa?si=8f182678ad2f43d5",
-    description: "Modern indie meets desi vibes. Rishi Roy and Dabzee created something special here - the kind of track that plays on repeat for days. Raw, real, relatable."
+    description: "Modern indie meets desi vibes."
   },
   {
     title: "Insaanile",
@@ -70,7 +70,7 @@ const songs = [
     album: "Single",
     cover: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763103077/Insaanile-Malayalam-2025-20250325091554-500x500_t8wo1i.webp",
     link: "https://open.spotify.com/track/1kl8HxZrfUluGnW5rorqzC?si=165f12ab627d4e51",
-    description: "Hanan Shah's voice is like silk wrapped around thorns. Insaanile explores the chaos of being human with poetic vulnerability. A hidden gem."
+    description: "Malayalam indie at its finest."
   }
 ];
 
@@ -80,276 +80,184 @@ const artists = [
     name: "Arijit Singh",
     photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763103212/wp8923347_nndudj.webp",
     link: "https://open.spotify.com/artist/4YRxDV8wJFPHPTeXepOstw?si=bfe32c2a4ba847af",
-    description: "The voice that redefined Bollywood romance. Arijit isn't just a singer; he's an emotion. His ability to pour soul into every syllable is unmatched. From heartbreak to hope, he's my #1 for a reason."
+    description: "The voice that redefined Bollywood romance. His ability to pour soul into every syllable is unmatched."
   },
   {
     rank: 2,
     name: "Shreya Ghoshal",
     photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763103425/137b99913eb39395821f6857da1a089a_gmj7vw.webp",
     link: "https://open.spotify.com/artist/0oOet2f43PA68X5RxKobEy?si=c2e48927248644f3",
-    description: "The queen of melody. Shreya's voice is crystal clear perfection - every note hits exactly where it should. She brings grace and power in equal measure. A living legend."
+    description: "The queen of melody. Shreya's voice is crystal clear perfection."
   },
   {
     rank: 3,
     name: "Haricharan",
     photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763103570/Haricharan_500x500_kmmerh.webp",
     link: "https://open.spotify.com/artist/1QvyquqkuuwUzdszyoKIy4?si=NyHutkzBR7KpybafTdcZrg",
-    description: "Underrated genius of South Indian music. Haricharan's versatility is mind-blowing - he can do classical, contemporary, and everything in between. His voice has this warmth that's addictive."
+    description: "Underrated genius of South Indian music. His versatility is mind-blowing."
   },
   {
     rank: 4,
     name: "Shankar Mahadevan",
     photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763103681/shankar-mahadevan-vashi-navi-mumbai-playback-singers-bjdm5_nhzm6c.webp",
     link: "https://open.spotify.com/artist/1SJOL9HJ08YOn92lFcYf8a?si=283d4e65e88c43ff",
-    description: "The man who made 'Breathless' a reality. Shankar Mahadevan is a powerhouse - technically brilliant and emotionally resonant. His classical training shines through in every performance."
+    description: "The man who made 'Breathless' a reality. Technically brilliant."
   },
   {
     rank: 5,
     name: "KS Harisankar",
     photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763103781/400x400bb_temv95.webp",
     link: "https://open.spotify.com/artist/4JXqxFqi9dxlsiXKZhKvzB?si=0241cc0785544926",
-    description: "The soulful voice of Malayalam cinema. KS Harisankar brings depth and emotion to every track. His songs feel like conversations with an old friend."
+    description: "The soulful voice of Malayalam cinema."
   },
   {
     rank: 6,
     name: "Anuv Jain",
     photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763103886/9287775_idva3n.webp",
     link: "https://open.spotify.com/artist/4gdMJYnopf2nEUcanAwstx?si=33316520b8e14c1d",
-    description: "The voice of modern indie India. Anuv writes poetry, then sings it like he's reading from his diary. Authentic, vulnerable, and incredibly talented."
+    description: "The voice of modern indie India. Authentic and vulnerable."
   },
   {
     rank: 7,
     name: "ZAYN",
     photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763103988/bf7bd374ea32805789e5cfb855d48301_l3babf.webp",
     link: "https://open.spotify.com/artist/5ZsFI1h6hIdQRw2ti0hz81?si=02cadb6b159c4ae9",
-    description: "The rebel who chose artistry over fame. Zayn's R&B-influenced sound is smooth, mature, and unapologetically him. His vocal range is insane."
+    description: "The rebel who chose artistry over fame."
   },
   {
     rank: 8,
     name: "The Weeknd",
-    photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763104080/ab67616100005174c5649add07ed3720be9d5526_bz0qrn.webp",
+    photo: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763402110/512px-The_Weeknd_Portrait_by_Brian_Ziff_wzv1wf.webp",
     link: "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ?si=64b17abfc3e54fd0",
-    description: "The king of dark pop. The Weeknd creates sonic landscapes that are haunting and beautiful. His voice is a drug you can't quit. Cinematic excellence."
+    description: "The king of dark pop. Creates haunting sonic landscapes."
   }
 ];
 
 const Spotify = () => {
   const [logoVisible, setLogoVisible] = useState(true);
 
-  useState(() => {
-    const timer = setTimeout(() => setLogoVisible(false), 2000);
+  useEffect(() => {
+    const timer = setTimeout(() => setLogoVisible(false), 3000);
     return () => clearTimeout(timer);
-  });
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-mesh relative">
+    <div className="min-h-screen bg-gradient-mesh relative overflow-hidden">
       <AnimatedBackground />
       <SubtleAnimations />
       <Navigation />
 
-      {/* Spotify Logo Animation */}
-      {logoVisible && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.2 }}
-          transition={{ duration: 0.8 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background"
-        >
+      <AnimatePresence>
+        {logoVisible && (
           <motion.div
-            animate={{ 
-              rotate: [0, 360],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ 
-              duration: 1.5,
-              ease: "easeInOut"
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-green-600 via-purple-600 to-blue-600"
           >
-            <Music className="h-32 w-32 text-primary" />
+            <motion.div
+              initial={{ scale: 0.5, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              exit={{ scale: 2, opacity: 0 }}
+              transition={{ duration: 1.2, ease: [0.34, 1.56, 0.64, 1] }}
+              className="relative"
+            >
+              <Music className="w-32 h-32 text-white drop-shadow-2xl" />
+              <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-white rounded-full blur-3xl opacity-50"
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
 
-      <main className="pt-24 pb-20 px-4 sm:px-6 relative z-10">
+      <main className="pt-32 pb-20 px-4 sm:px-6 relative z-10">
         <div className="container mx-auto max-w-7xl">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight flex items-center justify-center gap-4">
-              <Music className="h-16 w-16" />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center mb-16">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight bg-gradient-to-r from-green-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
               My Sonic Universe
             </h1>
-            <p className="text-muted-foreground text-lg sm:text-xl max-w-3xl mx-auto mb-8">
-              Music isn't just what I listen to - it's who I am. As a guitarist and audiophile, I live for those moments when a chord progression hits just right, when the bassline makes your chest vibrate, when lyrics speak your unsaid thoughts. Here's a glimpse into my musical soul.
+            <p className="text-muted-foreground text-base sm:text-lg max-w-3xl mx-auto mb-8">
+              Music is my therapy, my energy, my escape. From Bollywood classics to Western indie, I don't discriminate - if it hits, it hits.
             </p>
-            <Button
-              size="lg"
-              onClick={() => window.open('https://open.spotify.com/user/hari456', '_blank')}
-              className="group"
-            >
-              <ExternalLink className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-              Open My Spotify Profile
+            <Button asChild className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white">
+              <a href="https://open.spotify.com/user/31cms34hx7swbmxgc27cxzt53ue4?si=2065f16b9e054bfa" target="_blank" rel="noopener noreferrer">
+                <Music className="w-4 h-4 mr-2" />
+                Visit My Spotify Profile
+              </a>
             </Button>
           </motion.div>
 
-          {/* Guitar & Audiophile Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <Card className="p-8 bg-gradient-to-br from-primary/5 to-accent/5">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="flex items-start gap-4">
-                  <Guitar className="h-12 w-12 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="text-2xl font-bold mb-3">Guitar Enthusiast</h3>
-                    <p className="text-muted-foreground">
-                      There's something magical about feeling strings vibrate under your fingertips. Whether it's nailing that tricky solo or just strumming on lazy evenings, my guitar is an extension of my thoughts. Music theory meets emotion when you create your own melodies.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Headphones className="h-12 w-12 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="text-2xl font-bold mb-3">Audiophile at Heart</h3>
-                    <p className="text-muted-foreground">
-                      I don't just hear music; I experience it. From lossless formats to studio-grade headphones, I chase that perfect sound signature. Every instrument, every vocal layer, every subtle reverb - I hear it all. Music deserves to be heard the way it was meant to be.
-                    </p>
-                  </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-20 p-8 rounded-sm border border-border bg-gradient-to-br from-card/50 to-secondary/30 backdrop-blur-sm">
+            <div className="flex items-center gap-4 mb-6">
+              <Headphones className="w-8 h-8 text-green-400" />
+              <h2 className="text-3xl font-bold">Audiophile Confession</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 text-muted-foreground">
+              <div>
+                <p className="mb-4">24-bit/96kHz isn't just a spec sheet flex - it's how music should be experienced. I can tell you if the snare drum is slightly off or if the bass is mixed too low.</p>
+                <p>My "anatomical ears" pick up nuances most people miss. Every layer, every frequency matters.</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Guitar className="w-8 h-8 text-purple-400" />
+                <div>
+                  <h3 className="font-bold text-foreground mb-2">Guitar Vibes</h3>
+                  <p className="text-sm">I don't just listen to music - I create it. My guitar is my second voice.</p>
                 </div>
               </div>
-            </Card>
+            </div>
           </motion.div>
 
-          {/* Favorite Songs */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <h2 className="text-4xl font-bold mb-4 text-center">Top 8 Tracks</h2>
-            <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-              My music library has thousands of songs, but at the end of the day, I'm only human. These are the 8 tracks that defined my recent playlists. Want more? Check my public playlists - trust me, it's a rabbit hole worth falling into.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-20">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Top 8 Tracks</h2>
+            <p className="text-muted-foreground mb-8">My musical DNA in 8 songs. These aren't just tracks - they're pieces of me.</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {songs.map((song, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group cursor-pointer h-full flex flex-col">
-                    <div className="relative overflow-hidden aspect-square">
-                      <motion.img
-                        src={song.cover}
-                        alt={song.title}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <motion.a
-                        href={song.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <Music className="h-16 w-16 text-white" />
-                      </motion.a>
+                <motion.a key={song.title} href={song.link} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} whileHover={{ scale: 1.05, y: -5 }} transition={{ duration: 0.3, delay: index * 0.05 }} viewport={{ once: true }} className="group">
+                  <Card className="overflow-hidden border-border hover:border-foreground transition-all hover:shadow-xl hover:shadow-green-500/20 bg-gradient-to-br from-card to-secondary/50">
+                    <div className="relative aspect-square overflow-hidden">
+                      <img src={song.cover} alt={song.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ExternalLink className="absolute top-3 right-3 w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
                     </div>
-                    
-                    <div className="p-4 flex-1 flex flex-col">
-                      <h3 className="font-bold text-lg mb-1 group-hover:text-primary transition-colors line-clamp-1">
-                        {song.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-3">{song.artist}</p>
-                      <p className="text-xs text-muted-foreground leading-relaxed flex-1">
-                        {song.description}
-                      </p>
+                    <div className="p-4">
+                      <h3 className="font-bold text-sm mb-1 line-clamp-1">{song.title}</h3>
+                      <p className="text-xs text-muted-foreground mb-2 line-clamp-1">{song.artist}</p>
+                      <p className="text-xs text-muted-foreground line-clamp-2">{song.description}</p>
                     </div>
                   </Card>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
+            <p className="text-sm text-muted-foreground text-center mt-8 italic">
+              My music taste isn't confined to 8 songs. Check out my <a href="https://open.spotify.com/user/31cms34hx7swbmxgc27cxzt53ue4?si=2065f16b9e054bfa" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-green-400 underline">public playlists</a> for the full story.
+            </p>
           </motion.div>
 
-          {/* Favorite Artists */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold mb-4 text-center">Top 8 Artists</h2>
-            <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-              These artists shaped my musical identity. Rankings mean nothing when everyone's great, but here's my current top 8. My full artist collection? Visit my profile - I promise you'll discover something new.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Top 8 Artists</h2>
+            <p className="text-muted-foreground mb-8">The voices that shaped my musical journey.</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {artists.map((artist, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 group cursor-pointer h-full flex flex-col">
-                    <div className="relative overflow-hidden aspect-square">
-                      <motion.img
-                        src={artist.photo}
-                        alt={artist.name}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.1, rotate: 2 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <div className="absolute top-4 left-4 bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center font-bold text-lg shadow-lg">
-                        #{artist.rank}
-                      </div>
-                      <motion.a
-                        href={artist.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-                      >
-                        <ExternalLink className="h-12 w-12 text-white" />
-                      </motion.a>
+                <motion.a key={artist.name} href={artist.link} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} whileHover={{ scale: 1.05, y: -5 }} transition={{ duration: 0.3, delay: index * 0.05 }} viewport={{ once: true }} className="group">
+                  <Card className="overflow-hidden border-border hover:border-foreground transition-all hover:shadow-xl hover:shadow-purple-500/20 bg-gradient-to-br from-card to-secondary/50">
+                    <div className="relative aspect-square overflow-hidden">
+                      <img src={artist.photo} alt={artist.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm px-3 py-1 rounded-full"><span className="text-xs font-bold">#{artist.rank}</span></div>
+                      <ExternalLink className="absolute top-3 right-3 w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
                     </div>
-                    
-                    <div className="p-4 flex-1 flex flex-col">
-                      <h3 className="font-bold text-xl mb-3 group-hover:text-primary transition-colors">
-                        {artist.name}
-                      </h3>
-                      <p className="text-xs text-muted-foreground leading-relaxed flex-1">
-                        {artist.description}
-                      </p>
+                    <div className="p-4">
+                      <h3 className="font-bold text-sm mb-2">{artist.name}</h3>
+                      <p className="text-xs text-muted-foreground line-clamp-3">{artist.description}</p>
                     </div>
                   </Card>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
-          </motion.div>
-
-          {/* Footer Note */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-16 p-8 border border-border rounded-lg"
-          >
-            <p className="text-muted-foreground italic">
-              "This is just the tip of the iceberg. My musical taste isn't confined to 8 songs and 8 artists - I'm a genre-fluid listener who finds beauty everywhere. Want the full experience? Hit up my Spotify profile and dive into my playlists. Trust me, you'll either love my taste or question my sanity. Either way, it's a journey." 🎵
-            </p>
+            <p className="text-sm text-muted-foreground text-center mt-8 italic">These are just the ones I had space to feature. My Spotify profile has the unabridged version.</p>
           </motion.div>
         </div>
       </main>
