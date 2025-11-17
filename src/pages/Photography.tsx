@@ -11,55 +11,64 @@ const Photography = () => {
     {
       id: 1,
       url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763010957/street_gwqaoz.jpg",
-      title: "Urban Wanderer",
+      title: "Night Streets",
+      description: "Urban exploration captured through shadows and light",
       category: "Street"
     },
     {
       id: 2,
-      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763010957/street_gwqaoz.jpg",
-      title: "Golden Portrait",
+      url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763401775/20241220_131815_jfuote.jpg",
+      title: "Natural Moment",
+      description: "Authentic emotion frozen in time",
       category: "Portrait"
     },
     {
       id: 3,
       url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967310/20250203_194938_utmhje.jpg",
       title: "Evening Glow",
+      description: "Golden hour magic with dreamy bokeh",
       category: "Portrait"
     },
     {
       id: 4,
       url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/20250711_170352_tzhs3l.jpg",
       title: "Afternoon Light",
+      description: "Soft natural lighting brings out the subject's character",
       category: "Portrait"
     },
     {
       id: 5,
       url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967309/oo_cvqifs.jpg",
       title: "Natural Mood",
+      description: "Candid portrait with authentic expressions",
       category: "Portrait"
     },
     {
       id: 6,
       url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/poiu_rt7p2c.jpg",
       title: "Classic Frame",
+      description: "Traditional portrait with a modern twist",
       category: "Portrait"
     },
     {
       id: 7,
       url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1762967308/IMG-20250922-WA0005_onmzj7.jpg",
       title: "Candid Capture",
+      description: "Unposed moment caught in motion",
       category: "Street"
     },
     {
       id: 8,
       url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763011057/DSC00423_yepigg.jpg",
       title: "Raw Emotion",
+      description: "Pure feeling translated through the lens",
       category: "Portrait"
     },
     {
       id: 9,
       url: "https://res.cloudinary.com/di4s4vcah/image/upload/v1763046146/Screenshot_20251112_222232_Instagram_p6uf89.jpg",
       title: "Morning Shot",
+      description: "Fresh perspective in early daylight",
       category: "Portrait"
     },
   ];
