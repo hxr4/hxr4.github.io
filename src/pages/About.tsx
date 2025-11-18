@@ -20,13 +20,13 @@ const About = () => {
   const interests = [
     {
       icon: Terminal,
-      title: "CLI Purist (80%)",
+      title: "Faithful to CLI",
       desc: "sudo over buttons. Always.",
       color: "from-muted to-muted-foreground/20"
     },
     {
       icon: Code2,
-      title: "Python Wizard",
+      title: "Strong Python",
       desc: "Neural nets that actually converge",
       color: "from-muted to-muted-foreground/20"
     },
@@ -38,13 +38,13 @@ const About = () => {
     },
     {
       icon: Cpu,
-      title: "Hardware Surgeon",
+      title: "Hardware Ressurector",
       desc: "Root, brick, resurrect, repeat",
       color: "from-muted to-muted-foreground/20"
     },
     {
       icon: Headphones,
-      title: "24-Bit/96KHz Ears",
+      title: "Love collecting Audiophile Gears",
       desc: "Lossy compression? Not here.",
       color: "from-muted to-muted-foreground/20"
     },
@@ -56,14 +56,14 @@ const About = () => {
     },
     {
       icon: Music,
-      title: "Sound Architect",
-      desc: "96kHz minimum standards",
+      title: "Music? Everytime!",
+      desc: "Loves hearing Music in Hi-Res Losless Formats, Upto 24-Bit/96KHz",
       color: "from-muted to-muted-foreground/20"
     },
     {
       icon: Lightbulb,
-      title: "Digital Alchemist",
-      desc: "Debugging = necromancy",
+      title: "Very Updated with Latest Tech",
+      desc: "Loves watching new Product Launches, Reviews, Documentaries and Ted Talks",
       color: "from-muted to-muted-foreground/20"
     }
   ];
@@ -133,19 +133,19 @@ const About = () => {
                 className="space-y-6 text-muted-foreground text-lg leading-relaxed"
               >
                 <p>
-                  AI/ML student who trains neural networks that actually converge. 
-                  Python whisperer. CLI purist. Your GUI is cute, but I'll stick to my terminal.
+                  AI/ML student who builds models that consistently converge. Fluent in Python. Faithful to CLI. 
+                  GUI is fine, but I prefer working in the terminal.
                 </p>
                 
                 <p>
                   Portrait photographer wielding mirrorless glass. Hardware surgeon 
                   who roots, bricks, ROM-swaps, and somehow resurrects devices. 
-                  Call it debugging—I call it digital necromancy.
+                  Names it as digital necromancy, and calss it a day.
                 </p>
 
                 <p>
-                  Audiophile with ears tuned to 24-bit/96kHz. Lossy compression? 
-                  Not in my library. Fluent in every OS, but <span className="text-hero-accent font-mono">bash</span> speaks 
+                  Audiophile with ears somehow tuned to Precision. Lossy compression? 
+                  Not in my library. Experienced every OS, but <span className="text-hero-accent font-mono">bash</span> speaks 
                   my language best.
                 </p>
               </motion.div>
@@ -227,15 +227,15 @@ const About = () => {
             className="mt-20 grid grid-cols-3 gap-8 text-center"
           >
             <div>
-              <div className="text-4xl font-bold text-foreground mb-2">24/96</div>
+              <div className="text-4xl font-bold text-foreground mb-2">24-Bit/96KHz</div>
               <div className="text-sm text-muted-foreground">Audio Standard</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-foreground mb-2">∞</div>
-              <div className="text-sm text-muted-foreground">Linux Distros Tried</div>
+              <div className="text-sm text-muted-foreground">Linux Distros Tried, Failed, Resurrected.</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-foreground mb-2">100%</div>
+              <div className="text-4xl font-bold text-foreground mb-2">80%</div>
               <div className="text-sm text-muted-foreground">CLI Preference</div>
             </div>
           </motion.div>
