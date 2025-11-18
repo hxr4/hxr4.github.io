@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import SubtleAnimations from "@/components/SubtleAnimations";
 import { motion } from "framer-motion";
-import { Terminal, Cpu, Camera, Headphones, Code2, Zap, Music, Lightbulb, Monitor, Smartphone } from "lucide-react";
+import { Terminal, Cpu, Camera, Headphones, Code2, Zap, Music, Lightbulb } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const About = () => {
@@ -20,7 +20,7 @@ const About = () => {
   const interests = [
     {
       icon: Terminal,
-      title: "CLI Purist",
+      title: "CLI Purist (80%)",
       desc: "sudo over buttons. Always.",
       color: "from-muted to-muted-foreground/20"
     },
@@ -44,7 +44,7 @@ const About = () => {
     },
     {
       icon: Headphones,
-      title: "24-bit Ears",
+      title: "24-Bit/96KHz Ears",
       desc: "Lossy compression? Not here.",
       color: "from-muted to-muted-foreground/20"
     },
@@ -184,68 +184,37 @@ const About = () => {
             transition={{ delay: 1, duration: 0.6 }}
             className="mt-20"
           >
-            <h2 className="text-3xl font-bold mb-8 tracking-tight text-foreground">Current Setup</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Computing */}
+            <h2 className="text-3xl font-bold mb-8 tracking-tight text-foreground">Current Arsenal</h2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {/* Camera Setup */}
               <motion.div
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="p-6 rounded-sm border border-border hover:border-foreground transition-all bg-background/30 backdrop-blur-sm"
-              >
-                <Monitor className="w-8 h-8 mb-3 text-hero-accent" />
-                <h3 className="text-lg font-semibold mb-3 text-foreground">Computing</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• MacBook Air M4</li>
-                  <li>• Dell Inspiron 15 (Ryzen 5 7350u)</li>
-                </ul>
-              </motion.div>
-
-              {/* Mobile */}
-              <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="p-6 rounded-sm border border-border hover:border-foreground transition-all bg-background/30 backdrop-blur-sm"
-              >
-                <Smartphone className="w-8 h-8 mb-3 text-hero-accent" />
-                <h3 className="text-lg font-semibold mb-3 text-foreground">Mobile</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Samsung Galaxy S23 Ultra</li>
-                </ul>
-              </motion.div>
-
-              {/* Camera */}
-              <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="p-6 rounded-sm border border-border hover:border-foreground transition-all bg-background/30 backdrop-blur-sm"
+                className="p-6 rounded-sm border border-border hover:border-foreground transition-all bg-card/30 backdrop-blur-sm"
               >
                 <Camera className="w-8 h-8 mb-3 text-hero-accent" />
-                <h3 className="text-lg font-semibold mb-3 text-foreground">Camera</h3>
+                <h3 className="text-lg font-semibold mb-3 text-foreground">Camera Setup</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• Sony A7M4</li>
                   <li className="ml-4">— 85mm f/1.4 Sigma DGDN</li>
                   <li className="ml-4">— 70-200mm f/2.0-f/11 Sony</li>
-                  <li className="ml-4">— 135mm f/1.8-f/2.8 Sigma ProArt</li>
+                  <li className="ml-4">— 135mm f/1.8-f/2.8 Sigma ProArt DGDN</li>
                 </ul>
               </motion.div>
 
-              {/* Audio */}
+              {/* Audio Arsenal */}
               <motion.div
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="p-6 rounded-sm border border-border hover:border-foreground transition-all bg-background/30 backdrop-blur-sm sm:col-span-2 lg:col-span-3"
+                className="p-6 rounded-sm border border-border hover:border-foreground transition-all bg-card/30 backdrop-blur-sm"
               >
                 <Headphones className="w-8 h-8 mb-3 text-hero-accent" />
-                <h3 className="text-lg font-semibold mb-3 text-foreground">Audio Arsenal</h3>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• OnePlus Nord Buds 3 Pro</li>
-                    <li>• OnePlus Buds Pro 3</li>
-                  </ul>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Sony CH720N</li>
-                    <li>• KZ Vader Pro IEM (3DD Tuning)</li>
-                  </ul>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Headphonezone Hi-res DAC</li>
-                  </ul>
-                </div>
+                <h3 className="text-lg font-semibold mb-3 text-foreground">Audio Arsenal (24-Bit/96KHz)</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• OnePlus Nord Buds 3 Pro</li>
+                  <li>• OnePlus Buds Pro 3</li>
+                  <li>• Sony CH720N</li>
+                  <li>• KZ Vader Pro IEM (3DD Tuning Edition)</li>
+                  <li>• Headphonezone Hi-res DAC</li>
+                </ul>
               </motion.div>
             </div>
           </motion.div>
